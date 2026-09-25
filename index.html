@@ -6,7 +6,7 @@
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="apple-mobile-web-app-title" content="Copycats HQ">
 
 <style>
@@ -49,6 +49,19 @@ table{width:100%;border-collapse:collapse}th,td{padding:12px 14px;border-bottom:
 .mobileMoreGrid>button span{display:block;color:var(--gold);font-size:21px;margin-bottom:8px}
 .mobileMoreGrid>button b{display:block;font-size:14px}.mobileMoreGrid>button small{display:block;color:var(--muted);font-size:11px;line-height:1.25;margin-top:4px}
 }
+
+/* iPhone Home Screen safe-area fix */
+:root{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px)}
+html,body{background:#09090b}
+@media (display-mode: standalone) and (max-width:700px){
+  body{padding-top:var(--safe-top)!important}
+  .mobilebar{
+    padding-bottom:calc(10px + var(--safe-bottom))!important;
+    min-height:calc(74px + var(--safe-bottom))!important
+  }
+  main,.main{padding-bottom:calc(100px + var(--safe-bottom))!important}
+}
+
 </style>
 <script>
 const COPYCATS_API_URL = "https://script.google.com/macros/s/AKfycby6S3VJ-RgR9TwUVHYeUPeHjugM4DPii_-NCjMpluJtgeAhYIh4F5J-pW76SbHGwByh/exec";
